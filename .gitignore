@@ -1,0 +1,27 @@
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Temporary and build files
+.DS_Store
+.env
+.next/
+out/
+dist/
+.cache/
+
+# Static assets
+*.glb
+*.gltf
+*.fbx
+*.obj
+*.stl
+*.zip
+*.rar
+*.7z
+
+# Large raw files
+raw_assets/
+large_files/

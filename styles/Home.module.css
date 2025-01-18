@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 2rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 5rem 0;
+}
+
+.title {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.description {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.code {
+  background: #f0f0f0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
