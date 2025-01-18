@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, AmbientLight, Sphere } from '@react-three/drei';
+import { OrbitControls, Sphere } from '@react-three/drei';
 
 const ThreeCanvas: React.FC = () => {
   useEffect(() => {
@@ -9,10 +9,15 @@ const ThreeCanvas: React.FC = () => {
 
   return (
     <Canvas>
-      <AmbientLight intensity={0.5} />
+      {/* Add ambient light */}
+      <ambientLight intensity={0.5} />
+      
+      {/* Add controls */}
       <OrbitControls />
+      
+      {/* Add a sphere */}
       <Sphere args={[1, 32, 32]} position={[0, 0, 0]}>
-        <MeshStandardMaterial attach="material" color="orange" />
+        <meshStandardMaterial color="orange" />
       </Sphere>
     </Canvas>
   );

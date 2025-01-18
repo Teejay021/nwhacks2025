@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to the 3D Scrolling Feature!
+          atom
         </h1>
         <ThreeCanvas />
         <AIPanel />
