@@ -2,11 +2,11 @@ import { useAnimations, useGLTF, useScroll } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
-useGLTF.preload("/models/atom.glb");
+useGLTF.preload("/models/eartb.glb");
 
 export default function Model() {
   const group = useRef(null);
-  const { animations, scene } = useGLTF("/models/atom.glb");
+  const { animations, scene } = useGLTF("/models/earth.glb");
   const { actions, clips } = useAnimations(animations, scene);
   const scroll = useScroll();
 

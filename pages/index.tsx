@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
-import ThreeCanvas from '../components/ThreeCanvas';
 import AIPanel from '../components/AIPanel';
 import styles from '../styles/Home.module.css';
 import Scene from '@/components/Scene';
@@ -14,10 +13,10 @@ const Home: React.FC = () => {
         <h1 className={styles.title}>
           atom
         </h1>
-        <ThreeCanvas />
-
+        <div className={styles.sceneContainer}>
+          <Scene />
+        </div>
         <AIPanel />
-        <Scene />
       </main>
     </div>
   );
