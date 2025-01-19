@@ -1,5 +1,4 @@
-# FILE: /my-nextjs-app/my-nextjs-app/README.md
-
+# Cosmic Zoom: Atom to Universe
 # WELCOME!
 Cosmic Zoom: Atom to Universe" is a visually immersive, interactive website that takes users on a seamless journey through the scales of the universe. By scrolling, users zoom out from the smallest objects, like atoms and DNA, to larger structures such as the Earth, our solar system, the milky way galaxy, and the observable universe. Each object is presented in stunning 3D with animations (some of which is formed from real geographic and texture data created by NASA), accompanied by fascinating facts, smooth transitions, and a Q&A panel to ask an A.I. for more anytime.
 
@@ -8,17 +7,22 @@ This project bridges education and entertainment, helping users grasp the relati
 
 # My Next.js 3D Scrolling App
 
-This project is a Next.js application that features a home page with a title, a placeholder for a 3D scrolling feature, an API route for receiving questions and returning mock AI responses, and a reusable Three.js canvas with ambient lighting and a simple 3D object.
+**Cosmic Zoom: Atom to Universe** is a visually immersive, interactive website that takes users on a seamless journey through the scales of the universe. By scrolling, users zoom out from the smallest objects, like atoms and DNA, to larger structures such as the Earth, our solar system, the Milky Way galaxy, and the observable universe.
 
-## Project Structure
 
-- **pages/**
-  - **api/**
-    - `ask.ts`: API route for handling questions and returning mock AI responses.
-  - `index.tsx`: Home page of the application.
-  - `_app.tsx`: Custom App component for global styles.
-  - `[objectId].tsx`: Dynamic route for displaying individual objects.
+Each object is presented in stunning 3D with animations, some of which are formed using real geographic and texture data created by **NASA**. The experience is enhanced with:
+- Fascinating facts about each object.
+- Smooth transitions between scales.
+- An AI-powered Q&A panel to ask questions and explore more insights at any time.
 
+## **Purpose**
+This project bridges **education** and **entertainment**, helping users:
+- Grasp the relative sizes of objects in the universe.
+- Foster curiosity about science and our place in the cosmos.
+
+---
+
+<<<<<<< HEAD
 - **public/**
   - **models/**
     - `placeholder-model.glb`: Placeholder for a 3D model in GLB format.
@@ -71,3 +75,6 @@ The API route can be accessed at `/api/ask`. It accepts POST requests with a JSO
 
 Your application will be live on a Vercel URL once the deployment is complete!
 
+=======
+Feel free to contribute or explore the universe with **Cosmic Zoom**!
+>>>>>>> d89c760ca394a8f5214f698b4e03175e809fa392
