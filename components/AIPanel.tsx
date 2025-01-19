@@ -5,8 +5,10 @@ const AIPanel: React.FC = () => {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   const handleAsk = async () => {
+    setIsLoading(true); // Set loading state to true
     try {
       const res = await fetch('http://localhost:3001/api/generate', {
         method: 'POST',
@@ -21,6 +23,8 @@ const AIPanel: React.FC = () => {
     } catch (error) {
       console.error('Error fetching response:', error);
       setResponse('Failed to fetch response from the server.');
+    } finally {
+      setIsLoading(false); // Set loading state to false
     }
   };
 
@@ -48,7 +52,9 @@ const AIPanel: React.FC = () => {
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Type your question here..."
             />
-            <button onClick={handleAsk}>Ask</button>
+            <button onClick={handleAsk} disabled={isLoading}>
+              {isLoading ? <div className={styles.loader}></div> : 'Ask'}
+            </button>
             {response && (
               <div className={styles.response}>
                 <h3>Response:</h3>
