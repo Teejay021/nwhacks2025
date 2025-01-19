@@ -13,10 +13,11 @@ const AIPanel: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt: (question + "limit the answer to 200 characters") }),
+        body: JSON.stringify({ prompt: question }),
       });
       const data = await res.json();
       setResponse(data.answer);
+      console.log(data.answer);
     } catch (error) {
       console.error('Error fetching response:', error);
       setResponse('Failed to fetch response from the server.');
