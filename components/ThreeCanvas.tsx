@@ -39,7 +39,7 @@ const RotatingSphere: React.FC = () => {
   );
 };
 
-const ThreeCanvas: React.FC = () => {
+const ThreeCanvas: React.FC = ({ children }) => {
   return (
     <Canvas>
       {/* Add ambient light */}
@@ -48,8 +48,8 @@ const ThreeCanvas: React.FC = () => {
       {/* Add orbit controls */}
       <OrbitControls />
 
-      {/* Add a rotating sphere */}
-      <RotatingSphere />
+      {/* Add children components */}
+      {children}
     </Canvas>
   );
 };

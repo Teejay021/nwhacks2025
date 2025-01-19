@@ -11,11 +11,12 @@ function Loader() {
 }
 function CameraSetup({zoom}) {
   const {camera} = useThree();
+   //apply zoom each frame
   if (camera) {
     camera.zoom = zoom;
     camera.updateProjectionMatrix();
   };
-  //apply zoom each frame
+ 
   
   
   return null;
@@ -29,28 +30,33 @@ export default function Scene() {
       const newZoom = e.deltaY < 0 ? previousZoom - zoomStep : previousZoom + zoomStep;
       //constrain range
       console.log(newZoom);
-      return Math.max(1, Math.min(newZoom, 5)); 
+      return Math.max(1, Math.min(newZoom, 5));
     });
   }; 
  
   return (
-    <Canvas camera={{ position: [0, 0, 20], fov: 60 }} gl={{ antialias: true }} dpr={[1, 1.5]} className="relative h-svh" onWheel={(e) => handleScroll(e)}>
-      {/* Directional light for additional illumination */}
-      <directionalLight position={[-5, -5, 5]} intensity={4} />
-      <CameraSetup zoom={zoom}/>
-      <Suspense fallback={<Loader />}>
-        {/* Add Environment */}
-        <Environment
-          files="/models/moonlit_night.exr"
-          background={false}
-          blur={0}
-        />
 
-        {/*Scroll Controls */}
-        <ScrollControls damping={0.5} pages={3}>
-          <Model />
-        </ScrollControls>
-      </Suspense>
-    </Canvas>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 }}>
+      <Canvas camera={{ position: [0, 0, 5], fov: 60 }} gl={{ antialias: true }} dpr={[1, 1.5]} style={{ width: '80vw', height: '80vh' }} onWheel={handleScroll}>
+        {/* Directional light for additional illumination */}
+        <directionalLight position={[-5, -5, 5]} intensity={4} />
+        {/*Set up camera for zoom*/}
+        <CameraSetup zoom={zoom}/>
+        <Suspense fallback={<Loader />}>
+          {/* Add Environment */}
+          <Environment
+            files="/models/moonlit_night.exr"
+            background={false}
+            blur={0}
+          />
+
+
+          {/* Scroll Controls */}
+          <ScrollControls damping={0.5} pages={3}>
+            <Model />
+          </ScrollControls>
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }
