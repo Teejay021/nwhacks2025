@@ -1,5 +1,11 @@
 # FILE: /my-nextjs-app/my-nextjs-app/README.md
 
+# WELCOME!
+Cosmic Zoom: Atom to Universe" is a visually immersive, interactive website that takes users on a seamless journey through the scales of the universe. By scrolling, users zoom out from the smallest objects, like atoms and DNA, to larger structures such as the Earth, our solar system, the milky way galaxy, and the observable universe. Each object is presented in stunning 3D with animations (some of which is formed from real geographic and texture data created by NASA), accompanied by fascinating facts, smooth transitions, and a Q&A panel to ask an A.I. for more anytime.
+
+This project bridges education and entertainment, helping users grasp the relative sizes of objects in the universe while fostering curiosity about science and our place in it.
+
+
 # My Next.js 3D Scrolling App
 
 This project is a Next.js application that features a home page with a title, a placeholder for a 3D scrolling feature, an API route for receiving questions and returning mock AI responses, and a reusable Three.js canvas with ambient lighting and a simple 3D object.
@@ -64,3 +70,4 @@ The API route can be accessed at `/api/ask`. It accepts POST requests with a JSO
 4. Follow the prompts to deploy your application.
 
 Your application will be live on a Vercel URL once the deployment is complete!
+
