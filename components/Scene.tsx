@@ -2,7 +2,8 @@
 
 import { Canvas, useThree } from "@react-three/fiber";
 import Model from "./Model";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useState } from "react";
+
 import { useProgress, Html, ScrollControls, Environment, OrbitControls } from "@react-three/drei";
 
 function Loader() {
@@ -39,9 +40,14 @@ export default function Scene() {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', position: 'absolute', top: 0, left: 0 }}>
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }} gl={{ antialias: true }} dpr={[1, 1.5]} style={{ width: '80vw', height: '80vh' }} onWheel={handleScroll}>
         {/* Directional light for additional illumination */}
-        <directionalLight position={[-5, -5, 5]} intensity={4} />
+
         {/*Set up camera for zoom*/}
         <CameraSetup zoom={zoom}/>
+        <pointLight position={[5, 5, 5]} intensity={1} />
+        <ambientLight intensity={0.2} />
+
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
+
         <Suspense fallback={<Loader />}>
           {/* Add Environment */}
           <Environment
