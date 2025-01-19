@@ -1,60 +1,49 @@
-require('dotenv').config(); // Load .env file
-const express = require('express'); // Import Express framework
-const axios = require('axios'); // Import Axios library
-const cors = require('cors'); // Import CORS middleware
+import { useAnimations, useGLTF, useScroll } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 
-const app = express();
-const PORT = 3001; // Backend server port
-const apiKey = process.env.OPENAI_API_KEY; // Load OpenAI API key from .env file
 
-app.use(cors()); // Enable CORS
-app.use(express.json()); // Middleware: Parse JSON requests
 
-// Define a POST route for the frontend to call
-app.post('/api/generate', async (req, res) => {
-  const { prompt } = req.body; // Get user input from request body
+export default function Model({modelName}) {
+  useGLTF.preload("/models/" + modelName);
+  const group = useRef(null);
+  const { animations, scene } = useGLTF("/models/" + modelName);
+  const { actions, clips } = useAnimations(animations, scene);
+  const scroll = useScroll();
 
-  if (!prompt) {
-    return res.status(400).json({ error: 'Prompt is required' });
-  }
+  // Ensure the animation exists and is valid
+  useEffect(() => {
+    if (clips.length > 0) {
+      const actionName = clips[0].name; // Use the first animation name
+      const action = actions[actionName];
 
-  try {
-    // Call OpenAI API
-    const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
-      {
-        model: 'gpt-3.5-turbo',
-        messages: [
-          { role: 'system', content: 'You are a helpful assistant.' },
-          { role: 'user', content: prompt },
-        ],
-        max_tokens: 100,
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
+      if (action) {
+        action.play();
+        action.paused = true;
+      } else {
+        console.error(`Action for animation "${actionName}" not found.`);
       }
-    );
-
-    // Limit the length of the response
-    let generatedAnswer = response.data.choices[0].message.content.trim();
-    const maxLength = 50; // Set character limit
-    if (generatedAnswer.length > maxLength) {
-      generatedAnswer = generatedAnswer.slice(0, maxLength) + '...'; // Trim and append ellipsis
+    } else {
+      console.error("No animations found in the GLTF file.");
     }
+  }, [clips, actions]);
 
-    // Send the truncated response back to the frontend
-    res.json({ answer: generatedAnswer }); // Use `generatedAnswer` instead of the original response
-  } catch (error) {
-    console.error('Error communicating with OpenAI API:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to fetch response from OpenAI' });
-  }
-});
+  // Sync animation time with scroll
+  useFrame(() => {
+    if (clips.length > 0) {
+      const actionName = clips[0].name;
+      const action = actions[actionName];
+      if (action) {
+        const duration = action.getClip().duration;
+        // Syncing with scroll
+        action.time = duration * scroll.offset; 
+      }
+    }
+  });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+  return (
+    <group ref={group}>
+      <primitive object={scene} />
+    </group>
+  );
+}
