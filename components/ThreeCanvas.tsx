@@ -1,24 +1,55 @@
-import React, { useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useRef, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere } from '@react-three/drei';
 
-const ThreeCanvas: React.FC = () => {
+const RotatingSphere: React.FC = () => {
+  const sphereRef = useRef<any>(); // Reference to the Sphere
+  const mousePosition = useRef({ x: 0, y: 0 }); // Global mouse position tracker
+
+  // Global mouse tracking using the window object
   useEffect(() => {
-    // Any additional setup can be done here
+    const handleMouseMove = (event: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      // Normalize mouse position to range [-1, 1]
+      mousePosition.current.x = (event.clientX / innerWidth) * 2 - 1;
+      mousePosition.current.y = -(event.clientY / innerHeight) * 2 + 1;
+    };
+
+    // Attach the event listener
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
+  // Update sphere's rotation based on mouse position
+  useFrame(() => {
+    if (sphereRef.current) {
+      sphereRef.current.rotation.y = mousePosition.current.x * Math.PI;
+      sphereRef.current.rotation.x = mousePosition.current.y * Math.PI;
+    }
+  });
+
+  return (
+    <Sphere ref={sphereRef} args={[1, 32, 32]} position={[0, 0, 0]}>
+      <meshStandardMaterial color="orange" />
+    </Sphere>
+  );
+};
+
+const ThreeCanvas: React.FC = () => {
   return (
     <Canvas>
       {/* Add ambient light */}
       <ambientLight intensity={0.5} />
-      
-      {/* Add controls */}
+
+      {/* Add orbit controls */}
       <OrbitControls />
-      
-      {/* Add a sphere */}
-      <Sphere args={[1, 32, 32]} position={[0, 0, 0]}>
-        <meshStandardMaterial color="orange" />
-      </Sphere>
+
+      {/* Add a rotating sphere */}
+      <RotatingSphere />
     </Canvas>
   );
 };

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import ThreeCanvas from '../components/ThreeCanvas';
 import AIPanel from '../components/AIPanel';
 import styles from '../styles/Home.module.css';
+import Scene from '@/components/Scene';
 
 const Home: React.FC = () => {
   return (
@@ -18,7 +19,9 @@ const Home: React.FC = () => {
           atom
         </h1>
         <ThreeCanvas />
+
         <AIPanel />
+        <Scene />
       </main>
     </div>
   );

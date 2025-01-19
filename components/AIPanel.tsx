@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './AIPanel.module.css'; // Import the CSS Module
 
 const AIPanel: React.FC = () => {
   const [question, setQuestion] = useState('');
@@ -17,7 +18,7 @@ const AIPanel: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.aiPanel}>
       <h2>Q&A</h2>
       <input
         type="text"
@@ -27,7 +28,7 @@ const AIPanel: React.FC = () => {
       />
       <button onClick={handleAsk}>Ask</button>
       {response && (
-        <div>
+        <div className={styles.response}>
           <h3>Response:</h3>
           <p>{response}</p>
         </div>

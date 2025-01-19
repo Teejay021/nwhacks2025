@@ -1,0 +1,57 @@
+.aiPanel {
+  background: rgba(255, 255, 255, 0.1); /* Transparent background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.aiPanel h2 {
+  color: #333;
+}
+
+.aiPanel input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.aiPanel input:focus {
+  border-color: #1a1b1d; /* Match the ask button color */
+  box-shadow: 0 0 10px rgba(26, 27, 29, 0.5), 0 0 20px rgba(26, 27, 29, 0.3), 0 0 30px rgba(26, 27, 29, 0.2);
+  background-color: rgba(26, 27, 29, 0.1); /* Change background color on focus */
+}
+
+.aiPanel button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1a1b1d;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.aiPanel button:hover {
+  background-color: #343536;
+}
+
+.aiPanel .response {
+  margin-top: 20px;
+}
+
+.aiPanel .response h3 {
+  color: #333;
+}
+
+.aiPanel .response p {
+  color: #555;
+}
