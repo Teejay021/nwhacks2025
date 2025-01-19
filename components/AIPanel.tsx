@@ -7,15 +7,20 @@ const AIPanel: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleAsk = async () => {
-    const res = await fetch('/api/ask', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ question }),
-    });
-    const data = await res.json();
-    setResponse(data.answer);
+    try {
+      const res = await fetch('http://localhost:3001/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: (question + "limit the answer to 200 characters") }),
+      });
+      const data = await res.json();
+      setResponse(data.answer);
+    } catch (error) {
+      console.error('Error fetching response:', error);
+      setResponse('Failed to fetch response from the server.');
+    }
   };
 
   const togglePanel = () => {
@@ -34,20 +39,22 @@ const AIPanel: React.FC = () => {
           <button className={styles.closeButton} onClick={togglePanel}>
             X
           </button>
-          <h2>Q&A</h2>
-          <input
-            type="text"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Type your question here..."
-          />
-          <button onClick={handleAsk}>Ask</button>
-          {response && (
-            <div className={styles.response}>
-              <h3>Response:</h3>
-              <p>{response}</p>
-            </div>
-          )}
+          <div className={styles.formContent}>
+            <h2>Q&A</h2>
+            <input
+              type="text"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="Type your question here..."
+            />
+            <button onClick={handleAsk}>Ask</button>
+            {response && (
+              <div className={styles.response}>
+                <h3>Response:</h3>
+                <p>{response}</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
