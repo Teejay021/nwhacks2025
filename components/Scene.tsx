@@ -2,20 +2,42 @@
 
 import { Canvas, useThree } from "@react-three/fiber";
 import Model from "./Model";
-import { Suspense } from "react";
-import { useProgress, Html, ScrollControls, Environment } from "@react-three/drei";
+import { Suspense, useRef, useState } from "react";
+import { useProgress, Html, ScrollControls, Environment, OrbitControls } from "@react-three/drei";
 
 function Loader() {
   const { progress } = useProgress();
   return <Html center>{progress.toFixed(1)} % loaded</Html>;
 }
-
+function CameraSetup({zoom}) {
+  const {camera} = useThree();
+  if (camera) {
+    camera.zoom = zoom;
+    camera.updateProjectionMatrix();
+  };
+  //apply zoom each frame
+  
+  
+  return null;
+}
 export default function Scene() {
+  const [zoom, setZoom] = useState(2);//initial zoom
+  const handleScroll = (e) =>  {
+    const zoomStep = 0.05;
+    setZoom((previousZoom) => {
+      //determine scrolling up or down
+      const newZoom = e.deltaY < 0 ? previousZoom - zoomStep : previousZoom + zoomStep;
+      //constrain range
+      console.log(newZoom);
+      return Math.max(1, Math.min(newZoom, 5)); 
+    });
+  }; 
+ 
   return (
-    <Canvas camera={{ position: [0, 0, 12], fov: 60 }} gl={{ antialias: true }} dpr={[1, 1.5]} className="relative h-svh">
+    <Canvas camera={{ position: [0, 0, 20], fov: 60 }} gl={{ antialias: true }} dpr={[1, 1.5]} className="relative h-svh" onWheel={(e) => handleScroll(e)}>
       {/* Directional light for additional illumination */}
       <directionalLight position={[-5, -5, 5]} intensity={4} />
-
+      <CameraSetup zoom={zoom}/>
       <Suspense fallback={<Loader />}>
         {/* Add Environment */}
         <Environment
