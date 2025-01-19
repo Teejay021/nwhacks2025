@@ -47,7 +47,7 @@ app.post('/api/generate', async (req, res) => {
     
 
     // Send OpenAI's response back to the frontend
-    res.json({ answer: response.data.choices[0].message.content.trim() });
+    res.json({ answer: generatedAnswer });
   } catch (error) {
     console.error('Error communicating with OpenAI API:', error.response?.data || error.message);
     res.status(500).json({ error: 'Failed to fetch response from OpenAI' });
