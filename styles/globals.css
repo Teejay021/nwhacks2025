@@ -58,3 +58,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2px 4px;
   border-radius: 4px;
 }
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For other browsers */
+.scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
