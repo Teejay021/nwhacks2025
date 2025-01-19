@@ -1,31 +1,21 @@
 {
-  "name": "my-nextjs-app",
-  "version": "1.0.0",
-  "description": "A Next.js application with 3D scrolling features and AI-generated content.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@react-three/drei": "^9.121.2",
-    "@react-three/fiber": "^8.17.12",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "next": "latest",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "three": "^0.140.0"
-  },
-  "devDependencies": {
-    "@types/node": "22.10.7",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "typescript": "latest"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
-}
+    "name": "nwhack-backend",
+    "version": "1.0.0",
+    "description": "Backend server for NW Hack project",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js", 
+      "dev": "nodemon server.js"
+    },
+    "dependencies": {
+      "axios": "^1.7.9",
+      "dotenv": "^16.4.7",
+      "express": "^4.21.2"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.22"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
