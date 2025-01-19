@@ -3,7 +3,7 @@ const express = require('express'); // Import Express framework
 const axios = require('axios'); // Import Axios library
 
 const app = express();
-const PORT = 3000; // Backend server port
+const PORT = 3001; // Backend server port
 const apiKey = process.env.OPENAI_API_KEY; // Load OpenAI API key from .env file
 
 app.use(express.json()); // Middleware: Parse JSON requests
@@ -36,6 +36,15 @@ app.post('/api/generate', async (req, res) => {
         },
       }
     );
+
+
+    // Limit the length of the response
+    let generatedAnswer = response.data.choices[0].message.content.trim();
+    const maxLength = 50; // Set character limit
+    if (generatedAnswer.length > maxLength) {
+      generatedAnswer = generatedAnswer.slice(0, maxLength) + '...'; // Trim and append ellipsis
+    }
+    
 
     // Send OpenAI's response back to the frontend
     res.json({ answer: response.data.choices[0].message.content.trim() });
