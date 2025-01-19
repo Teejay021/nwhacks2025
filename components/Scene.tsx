@@ -17,9 +17,6 @@ function CameraSetup({zoom}) {
     camera.zoom = zoom;
     camera.updateProjectionMatrix();
   };
- 
-  
-  
   return null;
 }
 // This is not functional rn
@@ -80,7 +77,7 @@ export default function Scene() {
             blur={0}
           /> 
           {/* Scroll Controls */}
-          <ScrollControls  pages={3} damping={0.5}>
+          <ScrollControls  pages={3} damping={0.5} showScroll={false}>
             <Model modelName={models[modelNum]}/>
           </ScrollControls>
         </Suspense>

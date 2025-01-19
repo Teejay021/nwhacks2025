@@ -24,7 +24,7 @@ export default function Model({modelName}) {
         console.error(`Action for animation "${actionName}" not found.`);
       }
     } else {
-      console.error("No animations found in the GLTF file.");
+      console.warn("No animations found in the GLTF file.");
     }
   }, [clips, actions]);
 

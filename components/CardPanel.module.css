@@ -1,0 +1,36 @@
+.cardPanelContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.cardPanel {
+  background: rgba(22, 22, 22, 0.1); /* Semi-transparent background */
+  border-radius: 10px;
+  padding: 20px; /* Adjusted padding */
+  box-shadow: 0 4px 8px rgba(15, 15, 15, 0.1);
+  max-width: 400px; /* Adjusted max-width */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  backdrop-filter: blur(2px); /* Glassmorphism effect */
+  border: 1px solid rgba(245, 242, 242, 0.562);
+  position: absolute; /* Position it absolutely */
+  top: 38%; /* Center vertically */
+  right: 16%; /* Position it 20px from the right */
+  transform: translateY(-50%); /* Center vertically */
+  z-index: 100; /* Ensure it is on top */
+}
+
+.cardPanel h2 {
+  color: #ffffff;
+  margin-bottom: 10px; /* Add some space below the title */
+  border-bottom: 1px solid rgb(255, 252, 252); /* Add a border to act as a separator */
+  padding-bottom: 10px; /* Add some padding below the title */
+}
+
+.cardPanel p {
+  color: #ffffff;
+  margin-top: 10px; /* Add some space above the content */
+}

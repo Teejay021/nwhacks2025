@@ -8,15 +8,19 @@
 .toggleButton {
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #1a1b1d;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .toggleButton:hover {
-  background-color: #343536;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
 }
 
 .aiPanel {
@@ -47,7 +51,7 @@
 }
 
 .closeButton:hover {
-  background-color: rgba(52, 53, 54, 0.2) !important; /* Slightly darker on hover */
+  color: #ff4747b0 !important;
 }
 
 .formContent {
@@ -56,6 +60,7 @@
 
 .aiPanel h2 {
   color: #ffffff; /* Match the text color */
+  margin-bottom: 20px; /* Add space between the text "Q&A" and the input */
 }
 
 .aiPanel input {
