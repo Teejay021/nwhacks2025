@@ -1,11 +1,13 @@
 require('dotenv').config(); // Load .env file
 const express = require('express'); // Import Express framework
 const axios = require('axios'); // Import Axios library
+const cors = require('cors');
 
 const app = express();
 const PORT = 3001; // Backend server port
 const apiKey = process.env.OPENAI_API_KEY; // Load OpenAI API key from .env file
 
+app.use(cors());
 app.use(express.json()); // Middleware: Parse JSON requests
 
 // Define a POST route for the frontend to call

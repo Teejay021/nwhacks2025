@@ -5,7 +5,7 @@ const AIPanel: React.FC = () => {
   const [response, setResponse] = useState('');
 
   const handleAsk = async () => {
-    const res = await fetch('http://localhost:3000/api/generate', {
+    const res = await fetch('http://localhost:3001/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
