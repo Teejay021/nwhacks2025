@@ -76,7 +76,7 @@
 .aiPanel input:focus {
   border-color: #1a1b1d; /* Match the ask button color */
   box-shadow: 0 0 10px rgba(26, 27, 29, 0.5), 0 0 20px rgba(26, 27, 29, 0.3), 0 0 30px rgba(26, 27, 29, 0.2);
-  background-color: rgba(26, 27, 29, 0.1); /* Change background color on focus */
+  /*background-color: rgba(26, 27, 29, 0.1); /* Change background color on focus */
 }
 
 .aiPanel button {

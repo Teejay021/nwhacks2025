@@ -5,7 +5,6 @@ import { useFrame } from "@react-three/fiber";
 
 
 export default function Model({modelName}) {
-  useGLTF.preload("/models/" + modelName);
   const group = useRef(null);
   const { animations, scene } = useGLTF("/models/" + modelName);
   const { actions, clips } = useAnimations(animations, scene);
