@@ -1,77 +1,204 @@
-<<<<<<< HEAD
-# nwhacks2025
-=======
-# FILE: /my-nextjs-app/my-nextjs-app/README.md
+# 🌌 CosmicZoom - nwHacks 2025
 
-# WELCOME!
-Cosmic Zoom: Atom to Universe" is a visually immersive, interactive website that takes users on a seamless journey through the scales of the universe. By scrolling, users zoom out from the smallest objects, like atoms and DNA, to larger structures such as the Earth, our solar system, the milky way galaxy, and the observable universe. Each object is presented in stunning 3D with animations (some of which is formed from real geographic and texture data created by NASA), accompanied by fascinating facts, smooth transitions, and a Q&A panel to ask an A.I. for more anytime.
+An immersive educational platform that combines interactive 3D visualization with AI-powered Q&A to help students explore scientific concepts by zooming from the vast observable universe down to the atomic level.
 
-This project bridges education and entertainment, helping users grasp the relative sizes of objects in the universe while fostering curiosity about science and our place in it.
+## 🏆 Hackathon Project
 
+This project was developed for **nwHacks 2025** with the goal of creating an engaging, interactive learning experience where students can:
+- Explore 3D scientific models through intuitive scroll-based navigation
+- Journey from the cosmic scale down to atomic structures through seamless zooming
+- Ask questions and get AI-powered explanations about the content they're viewing
 
-# My Next.js 3D Scrolling App
+## ✨ Features
 
-This project is a Next.js application that features a home page with a title, a placeholder for a 3D scrolling feature, an API route for receiving questions and returning mock AI responses, and a reusable Three.js canvas with ambient lighting and a simple 3D object.
+### 🎯 Interactive 3D Visualization
+- **Scale-based Navigation**: Scroll to zoom from cosmic structures down to atomic level
+- **Smooth Transitions**: Seamless movement from universe to atoms through progressive zooming
+- **Real-time Rendering**: Powered by Three.js and React Three Fiber
+- **Mouse Interaction**: Orbit controls for 360° exploration of 3D models
 
-## Project Structure
+### 🧠 AI-Powered Q&A System
+- **Context-Aware Assistant**: Ask questions about the currently displayed 3D model
+- **OpenAI Integration**: Powered by GPT-3.5-turbo for intelligent responses
+- **Collapsible Interface**: Clean, non-intrusive panel design
+- **Real-time Communication**: Instant responses to student inquiries
 
-- **pages/**
-  - **api/**
-    - `ask.ts`: API route for handling questions and returning mock AI responses.
-  - `index.tsx`: Home page of the application.
-  - `_app.tsx`: Custom App component for global styles.
-  - `[objectId].tsx`: Dynamic route for displaying individual objects.
+### 📚 Educational Content
+The platform covers scientific concepts across multiple scales, starting from the largest and zooming into progressively smaller structures:
 
-- **public/**
-  - **models/**
-    - `placeholder-model.glb`: Placeholder for a 3D model in GLB format.
+1. **Observable Universe** - The largest scale we can observe
+2. **Milky Way Galaxy** - Our home galaxy with billions of stars
+3. **Solar System** - Celestial mechanics and planetary relationships
+4. **Earth** - Our planet and its characteristics
+5. **Biological Systems** - Living organisms (Beaver model)
+6. **DNA Helix** - Genetic information storage
+7. **Molecular Structure** - DNA bases and molecular interactions  
+8. **Atomic Level** - Basic building blocks of matter
 
-- **components/**
-  - `Header.tsx`: Renders the header of the application.
-  - `ThreeCanvas.tsx`: Reusable Three.js canvas component.
-  - `AIPanel.tsx`: Displays AI-generated educational content.
+## 🛠️ Technology Stack
 
-- **styles/**
-  - `Home.module.css`: CSS styles specific to the home page.
-  - `globals.css`: Global CSS styles for the application.
+### Frontend
+- **Next.js** - React framework with TypeScript
+- **React Three Fiber** - React renderer for Three.js
+- **@react-three/drei** - Useful helpers for 3D scenes
+- **Three.js** - 3D graphics library
+- **CSS Modules** - Scoped styling
 
-- **utils/**
-  - `scrollNavigation.ts`: Implements scrolling logic for navigation.
+### Backend
+- **Express.js** - Backend API server
+- **OpenAI API** - AI-powered responses
+- **Axios** - HTTP client for API calls
+- **CORS** - Cross-origin resource sharing
 
-- `tsconfig.json`: TypeScript configuration file.
-- `package.json`: npm configuration file.
+### 3D Assets
+- **GLTF/GLB Models** - Optimized 3D model format
+- **HDR Environment Maps** - Realistic lighting and reflections
 
-## Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository:
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- OpenAI API key
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Teejay021/nwhacks2025.git
+   cd nwhacks2025
    ```
-   git clone <repository-url>
-   cd my-nextjs-app
-   ```
 
-2. Install dependencies:
-   ```
+2. **Install dependencies**
+   ```bash
    npm install
    ```
 
-3. Run the development server:
+3. **Environment Setup**
+   Create a `.env` file in the root directory:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
    ```
+
+4. **Start the development servers**
+   
+   Terminal 1 - Frontend:
+   ```bash
    npm run dev
    ```
+   
+   Terminal 2 - Backend API:
+   ```bash
+   node server.js
+   ```
 
-4. Open your browser and navigate to `http://localhost:3000`.
+5. **Access the application**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:3001
 
-## API Route
+## 🎮 How to Use
 
-The API route can be accessed at `/api/ask`. It accepts POST requests with a JSON body containing a question and returns a mock AI response.
+### Navigation
+- **Scroll Up/Down**: Zoom in/out on current model
+- **Automatic Transitions**: Reach zoom limits to transition between scales
+- **Mouse Controls**: Click and drag to rotate 3D models
+- **Orbit View**: Explore models from all angles
 
-## Deploying on Vercel
+### AI Assistant
+1. Click **"Ask a Question"** button in the bottom-right corner
+2. Type your question about the current 3D model or scientific concept
+3. Click **"Ask"** to get an AI-powered response
+4. Close the panel with the **"X"** button when done
 
-1. Push your code to a GitHub repository.
-2. Go to [Vercel](https://vercel.com) and sign in.
-3. Import your GitHub repository.
-4. Follow the prompts to deploy your application.
+### Educational Journey
+Start from the **Observable Universe** and scroll to zoom in, triggering automatic transitions through:
+Universe → Galaxy → Solar System → Earth → Biology → DNA → Molecule → Atom
 
-Your application will be live on a Vercel URL once the deployment is complete!
+## 📁 Project Structure
 
->>>>>>> v2
+```
+├── components/           # React components
+│   ├── AIPanel.tsx      # AI Q&A interface
+│   ├── CardPanel.tsx    # Information display panel
+│   ├── Header.tsx       # Navigation header
+│   ├── Model.tsx        # 3D model loader
+│   ├── Scene.tsx        # Main 3D scene controller
+│   └── ThreeCanvas.tsx  # 3D canvas setup
+├── pages/               # Next.js pages
+│   ├── api/            # API routes
+│   ├── index.tsx       # Main application page
+│   └── _app.tsx        # App configuration
+├── public/             # Static assets
+│   └── models/         # 3D model files
+├── styles/             # CSS styling
+├── utils/              # Utility functions
+├── server.js           # Express backend server
+└── package.json        # Dependencies and scripts
+```
+
+## Key Components
+
+### Scene.tsx
+- Central controller for 3D visualization
+- Handles scroll-based zoom and model transitions
+- Manages lighting, camera, and fog effects
+- Coordinates with CardPanel for content display
+
+### AIPanel.tsx
+- Collapsible Q&A interface
+- Connects to backend API for AI responses
+- Loading states and error handling
+- Responsive design for different screen sizes
+
+### Model.tsx
+- Dynamic 3D model loader using GLTF format
+- Animation support with scroll synchronization
+- Optimized loading with preloading capabilities
+
+## Educational Impact
+
+This platform addresses key challenges in STEM education:
+
+- **Visual Learning**: Complex scientific concepts made tangible through 3D visualization
+- **Scale Comprehension**: Journey from cosmic to atomic scales helps students grasp relative sizes
+- **Interactive Engagement**: Active exploration rather than passive consumption
+- **Personalized Learning**: AI assistant provides instant answers to student questions
+- **Accessibility**: Web-based platform accessible from any device
+
+## Future Enhancements
+
+- **More 3D Models**: Expand the library with additional scientific visualizations
+- **VR Support**: Virtual reality integration for even more immersive experiences
+- **Collaborative Features**: Multi-user exploration and shared learning sessions
+- **Progress Tracking**: Student learning analytics and progress monitoring
+- **Mobile Optimization**: Enhanced mobile experience with touch controls
+- **Offline Mode**: Downloadable content for areas with limited internet
+
+## Contributing
+
+This project was created for nwHacks 2025. If you'd like to contribute or build upon this work:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- **nwHacks 2025** - For providing the platform and inspiration
+- **Three.js Community** - For the amazing 3D graphics capabilities
+- **OpenAI** - For the AI-powered educational assistance
+- **React Three Fiber** - For seamless React-Three.js integration
+
+## Contact
+
+For questions about this project or collaboration opportunities, please reach out through the GitHub repository.
+
+---
+
+**Built with ❤️ for education and exploration**
